@@ -13,6 +13,7 @@ import Navbar from './Pages/Components/Navbar.jsx';
 import Context from './main.jsx';
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import AIBot from './Pages/Components/AIbot.jsx';
 import axios from 'axios';
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/appointment' element={<Appointment/>}></Route>
           <Route path='/about' element={<AboutUs/>}></Route>
+          <Route path='/chat' element={<AIBot/>}></Route>
         </Routes>
         <ToastContainer position="top-center"/>
      
