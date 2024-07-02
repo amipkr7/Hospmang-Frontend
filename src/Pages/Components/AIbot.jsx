@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
-import './AIbot.css';
+//import './AIbot.css';
 
 const AIBot = () => {
   const MODEL_NAME = 'gemini-1.0-pro';
