@@ -68,7 +68,7 @@ const AIBot = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container m-top">
       <h1 className="title">CareConnectBot</h1>
       <div className="chat-box">
         <ul>

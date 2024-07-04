@@ -411,6 +411,10 @@ footer .content div:last-child div svg {
   color: gray;
   margin-bottom: 30px;
 }
+
+.m-top{
+  margin-top: 40px;
+}
 .card {
   position: relative;
   border-radius: 8px;
