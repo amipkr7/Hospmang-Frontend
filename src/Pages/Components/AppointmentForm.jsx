@@ -217,7 +217,7 @@ const AppointmentForm = () => {
               style={{ flex: "none", width: "25px" }}
             />
           </div>
-          <button onClick={} style={{ margin: "0 auto" }}>GET APPOINTMENT</button>
+          <button onClick={payment} style={{ margin: "0 auto" }}>GET APPOINTMENT</button>
         </form>
       </div>
     </>
