@@ -19,7 +19,7 @@ const Payment = () => {
       const order = await response.json();
 
       const options = {
-        key: 'YOUR_RAZORPAY_KEY_ID',
+        key: 'rzp_test_lK3ct7IlOGDMqU',
         amount: order.amount,
         currency: order.currency,
         name: 'Hospital Management System',
