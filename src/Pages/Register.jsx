@@ -42,7 +42,7 @@ const Register = () => {
     <div className='container form-component register-form'>
       <h2>SIgn Up</h2>
       <p>Please Sign Up To Continue</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolor expedita sunt natus quo accusamus suscipit, earum similique eligendi consequuntur!</p>
+      <p>ClinicSphere is an innovative clinic management system designed to streamline the operations of modern healthcare facilities. Its comprehensive suite of features aims to enhance both administrative and clinical workflows, ensuring a seamless experience for patients and staff alike.!</p>
       
       <form onSubmit={handleRegister}>
         <div>

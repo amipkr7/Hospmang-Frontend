@@ -37,7 +37,7 @@ const Login = () => {
     <div className='container form-component login-form'>
       <h2>Sign In</h2>
       <p>Please Login To Continue</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae officiis quasi quo accusamus vel. Eius provident doloremque modi similique unde.</p>
+      <p>ClinicSphere is an innovative clinic management system designed to streamline the operations of modern healthcare facilities. Its comprehensive suite of features aims to enhance both administrative and clinical workflows, ensuring a seamless experience for patients and staff alike.</p>
       <form onSubmit={handleLogin}>
         <input type="text" placeholder='Email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
         <input type="text" placeholder='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>

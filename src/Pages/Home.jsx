@@ -8,7 +8,7 @@ import about from '../Photos/about.png'
 const Home = () => {
   return (
     <>
-      <Hero title={"Welcome to the Hospital"} image_url={hero}/>
+      <Hero title={"Welcome to the ClinicSphere"} image_url={hero}/>
       <Biography image_url={about}/>
       <Departments/>
       <MessageForm/>
