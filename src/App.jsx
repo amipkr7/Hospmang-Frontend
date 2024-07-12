@@ -16,7 +16,7 @@ import { useContext } from 'react';
 import AIBot from './Pages/Components/AIbot.jsx';
 import axios from 'axios';
 import Payment from './Pages/Components/Payment.jsx';
-import Community from '../../dashboard/src/Components/Community.jsx';
+import Community from './Pages/Components/Community.jsx';
 
 const App = () => {
   const {isAuthenticated,setIsAuthenticated,setUser}=useContext(Context);
