@@ -16,6 +16,7 @@ import { useContext } from 'react';
 import AIBot from './Pages/Components/AIbot.jsx';
 import axios from 'axios';
 import Payment from './Pages/Components/Payment.jsx';
+import Community from '../../dashboard/src/Components/Community.jsx';
 
 const App = () => {
   const {isAuthenticated,setIsAuthenticated,setUser}=useContext(Context);
@@ -48,6 +49,7 @@ const App = () => {
           <Route path='/about' element={<AboutUs/>}></Route>
           <Route path='/chat' element={<AIBot/>}></Route>
           <Route path='/payment' element={<Payment/>}></Route>
+          <Route path='/community' element={<Community/>}></Route>
         </Routes>
         <ToastContainer position="top-center"/>
      

@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Context from "../../main";
 import logo from '../../Photos/logo.png'
+
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -48,6 +49,9 @@ const Navbar = () => {
             </Link>
             <Link to={"/chat"} onClick={() => setShow(!show)}>
               CHAT
+            </Link>
+            <Link to={"/community"} onClick={() => setShow(!show)}>
+              Community
             </Link>
           </div>
           {isAuthenticated ? (
