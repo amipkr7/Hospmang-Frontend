@@ -1,9 +1,10 @@
-import React from 'react';
-import './Payment.css';
+import React from "react";
+import "./Payment.css";
 
 const Payment = () => {
   const handlePayment = async () => {
     try {
+      // Make API call to create a Razorpay order
       const response = await fetch(
         "https://hospmang-frontend.onrender.com/create-order",
         {
@@ -12,55 +13,64 @@ const Payment = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            amount: 500,
+            amount: 500, // Amount in INR
             currency: "INR",
             receipt: "receipt#1",
           }),
         }
       );
 
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(`Failed to create order: ${errorMessage}`);
+      }
+
       const order = await response.json();
 
+      // Razorpay payment options
       const options = {
-        key: 'rzp_test_lK3ct7IlOGDMqU',
+        key: "rzp_test_lK3ct7IlOGDMqU", // Replace with your Razorpay key ID
         amount: order.amount,
         currency: order.currency,
-        name: 'Hospital Management System',
-        description: 'Test Transaction',
-        image: 'https://example.com/your_logo',
+        name: "Hospital Management System",
+        description: "Test Transaction",
+        image: "https://example.com/your_logo", // Replace with your logo URL
         order_id: order.id,
         handler: function (response) {
-          alert(`Payment ID: ${response.razorpay_payment_id}`);
-          alert(`Order ID: ${response.razorpay_order_id}`);
-          alert(`Signature: ${response.razorpay_signature}`);
+          alert(
+            `Payment Successful!\nPayment ID: ${response.razorpay_payment_id}\nOrder ID: ${response.razorpay_order_id}\nSignature: ${response.razorpay_signature}`
+          );
         },
         prefill: {
-          name: 'John Doe',
-          email: 'john.doe@example.com',
-          contact: '9999999999',
+          name: "John Doe",
+          email: "john.doe@example.com",
+          contact: "9999999999",
         },
         notes: {
-          address: 'Razorpay Corporate Office',
+          address: "Razorpay Corporate Office",
         },
         theme: {
-          color: '#3399cc',
+          color: "#3399cc",
         },
       };
 
+      // Initialize Razorpay instance
       const rzp1 = new window.Razorpay(options);
-      rzp1.on('payment.failed', function (response) {
-        alert(`Error Code: ${response.error.code}`);
-        alert(`Description: ${response.error.description}`);
-        alert(`Source: ${response.error.source}`);
-        alert(`Step: ${response.error.step}`);
-        alert(`Reason: ${response.error.reason}`);
-        alert(`Order ID: ${response.error.metadata.order_id}`);
-        alert(`Payment ID: ${response.error.metadata.payment_id}`);
+
+      // Payment failure handler
+      rzp1.on("payment.failed", function (response) {
+        alert(
+          `Payment Failed!\nError Code: ${response.error.code}\nDescription: ${response.error.description}\nReason: ${response.error.reason}\nOrder ID: ${response.error.metadata.order_id}\nPayment ID: ${response.error.metadata.payment_id}`
+        );
       });
 
+      // Open Razorpay payment form
       rzp1.open();
     } catch (error) {
-      console.error('Error creating order:', error);
+      console.error("Error creating order:", error);
+      alert(
+        "An error occurred while initiating the payment. Please try again."
+      );
     }
   };
 
