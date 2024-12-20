@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Footer from './Pages/Components/Footer.jsx';
 import './App.css'
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom'
