@@ -4,17 +4,20 @@ import './Payment.css';
 const Payment = () => {
   const handlePayment = async () => {
     try {
-      const response = await fetch('http://localhost:5000/create-order', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount: 500,
-          currency: 'INR',
-          receipt: 'receipt#1',
-        }),
-      });
+      const response = await fetch(
+        "https://hospmang-frontend.onrender.com/create-order",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: 500,
+            currency: "INR",
+            receipt: "receipt#1",
+          }),
+        }
+      );
 
       const order = await response.json();
 
