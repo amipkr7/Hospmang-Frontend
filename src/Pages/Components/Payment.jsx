@@ -28,10 +28,11 @@ const Payment = () => {
       }
 
       const order = await response.json();
+      console.log(order);
 
       // Razorpay payment options
       const options = {
-        key: "rzp_test_lK3ct7IlOGDMqU", // Replace with your Razorpay key ID
+        key: "rzp_test_e06ulY1lGnKEQ7", // Replace with your Razorpay key ID
         amount: order.amount,
         currency: order.currency,
         name: "Hospital Management System",
