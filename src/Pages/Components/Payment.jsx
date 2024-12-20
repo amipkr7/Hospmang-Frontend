@@ -4,7 +4,7 @@ import "./Payment.css";
 const Payment = () => {
   const handlePayment = async () => {
     try {
-      // Make API call to create a Razorpay order
+     
       const response = await fetch(
         "https://hospmang-frontend.onrender.com/create-order",
         {
@@ -13,12 +13,14 @@ const Payment = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            amount: 500, // Amount in INR
+            amount: 500, 
             currency: "INR",
             receipt: "receipt#1",
           }),
         }
+      
       );
+      console.log(response);
 
       if (!response.ok) {
         const errorMessage = await response.text();
