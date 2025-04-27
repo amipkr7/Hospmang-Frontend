@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
-import './Community.css'; // Import the CSS file
+import React, { useEffect, useState } from "react";
+import { io } from "socket.io-client";
+import "./Community.css"; // Import the CSS file
 
 function Community() {
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("https://hospmang-backend.onrender.com/community");
+    const newSocket = io("http://localhost:5000/community");
     setSocket(newSocket);
 
     // Event listener for incoming chat messages
@@ -28,7 +28,7 @@ function Community() {
   }, []);
 
   const handleInputChange = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setInput(e.target.value);
   };
 
@@ -39,7 +39,7 @@ function Community() {
 
       // Update local state
       // setMessages((prevMessages) => [...prevMessages, { id: socket.id, message: input }]);
-      setInput('');
+      setInput("");
     }
   };
 
@@ -50,9 +50,12 @@ function Community() {
           {messages.map((msg, index) => (
             <div
               key={index}
-              className={`message ${msg.id === socket.id ? 'my-message' : 'other-message'}`}
+              className={`message ${
+                msg.id === socket.id ? "my-message" : "other-message"
+              }`}
             >
-              <strong>{msg.id === socket.id ? 'Me' : 'Other'}: </strong>{msg.message}
+              <strong>{msg.id === socket.id ? "Me" : "Other"}: </strong>
+              {msg.message}
             </div>
           ))}
         </div>

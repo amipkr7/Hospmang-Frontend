@@ -4,15 +4,14 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Context from "../../main";
-import logo from '../../Photos/logo.png'
-
+import logo from "../../Photos/logo.png";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
 
   const handleLogout = async () => {
     await axios
-      .get("https://hospmang-backend.onrender.com/api/v1/user/patient/logout/me", {
+      .get("http://localhost:5000/api/v1/user/patient/logout/me", {
         withCredentials: true,
       })
       .then((res) => {
@@ -50,8 +49,8 @@ const Navbar = () => {
             <Link to={"/chat"} onClick={() => setShow(!show)}>
               CHAT
             </Link>
-            <Link to={"/community"} onClick={() => setShow(!show)}>
-              Community
+            <Link to={"/appointmentUser"} onClick={() => setShow(!show)}>
+              History
             </Link>
           </div>
           {isAuthenticated ? (

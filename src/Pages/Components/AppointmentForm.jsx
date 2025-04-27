@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+// import { Appointment } from "../../../../backend/models/appointmentSchema";
 
 const AppointmentForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -35,7 +36,7 @@ const AppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       const { data } = await axios.get(
-        "https://hospmang-backend.onrender.com/api/v1/user/doctors",
+        "http://localhost:5000/api/v1/user/doctors",
         { withCredentials: true }
       );
       setDoctors(data.doctors);
@@ -48,7 +49,7 @@ const AppointmentForm = () => {
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-        "https://hospmang-backend.onrender.com/app/v1/appointment/post",
+        "http://localhost:5000/api/v1/appointment/post",
         {
           firstName,
           lastName,
@@ -87,10 +88,39 @@ const AppointmentForm = () => {
       toast.error(error.response.data.message);
     }
   };
-  let navigate=useNavigate();
-  let payment =()=>{
-    navigate('/payment')
-  }
+  let navigate = useNavigate();
+  let payment = () => {
+    try{
+      if(!firstName){
+        throw new Error("Please fill all the fields correctly.");
+      }
+      else{
+        const appointment = new Appointment({
+          firstName,
+          lastName,
+          email,
+          phone,
+          nic,
+          dob,
+          gender,
+          appointmentDate,
+          department,
+          doctorFirstName,
+          doctorLastName,
+          hasVisited,
+          address
+        });
+        console.log(appointment);
+      }
+
+    }
+    catch(err){
+      console.log(err);
+      // toast.error("Please fill all the fields correctly.");
+    }
+
+    navigate("/payment");
+  };
 
   return (
     <>
@@ -128,7 +158,7 @@ const AppointmentForm = () => {
           <div>
             <input
               type="number"
-              placeholder="NIC"
+              placeholder="AADHAR"
               value={nic}
               onChange={(e) => setNic(e.target.value)}
             />
@@ -174,9 +204,9 @@ const AppointmentForm = () => {
               onChange={(e) => {
                 const [firstName, lastName] = e.target.value.split(" ");
                 setDoctorFirstName(firstName);
-                console.log(lastName)
+                console.log(lastName);
                 setDoctorLastName(lastName);
-                console.log(lastName)
+                console.log(lastName);
               }}
               disabled={!department}
             >
@@ -214,7 +244,16 @@ const AppointmentForm = () => {
               style={{ flex: "none", width: "25px" }}
             />
           </div>
-          <button onClick={payment} style={{ margin: "0 auto" }}>GET APPOINTMENT</button>
+          <button
+            onClick={async (e) => {
+              e.preventDefault(); // Prevent default form submission behavior
+              payment(); // Call the payment function
+              handleAppointment(e); // Call the appointment function
+            }}
+            style={{ margin: "0 auto" }}
+          >
+            GET APPOINTMENT
+          </button>
         </form>
       </div>
     </>

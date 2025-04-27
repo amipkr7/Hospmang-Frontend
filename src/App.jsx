@@ -1,4 +1,4 @@
-
+import React from 'react'
 import Footer from './Pages/Components/Footer.jsx';
 import './App.css'
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom'
@@ -15,8 +15,10 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import AIBot from './Pages/Components/AIbot.jsx';
 import axios from 'axios';
+import AppointmentUser from './Pages/Components/AppointmentUser.jsx';
+
+// import Payment from '../../dashboard/src/Components/Payment.jsx';
 import Payment from './Pages/Components/Payment.jsx';
-import Community from './Pages/Components/Community.jsx';
 
 const App = () => {
   const {isAuthenticated,setIsAuthenticated,setUser}=useContext(Context);
@@ -49,7 +51,7 @@ const App = () => {
           <Route path='/about' element={<AboutUs/>}></Route>
           <Route path='/chat' element={<AIBot/>}></Route>
           <Route path='/payment' element={<Payment/>}></Route>
-          <Route path='/community' element={<Community/>}></Route>
+          <Route path="/appointmentUser" element={<AppointmentUser/>}></Route>
         </Routes>
         <ToastContainer position="top-center"/>
      

@@ -4,22 +4,17 @@ import "./Payment.css";
 const Payment = () => {
   const handlePayment = async () => {
     try {
-     
-      const response = await fetch(
-        "https://hospmang-frontend.onrender.com/create-order",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            amount: 500, 
-            currency: "INR",
-            receipt: "receipt#1",
-          }),
-        }
-      
-      );
+      const response = await fetch("http://localhost:5000/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: 500,
+          currency: "INR",
+          receipt: "receipt#1",
+        }),
+      });
       console.log(response);
 
       if (!response.ok) {
@@ -35,7 +30,7 @@ const Payment = () => {
         key: "rzp_test_e06ulY1lGnKEQ7", // Replace with your Razorpay key ID
         amount: order.amount,
         currency: order.currency,
-        name: "Hospital Management System",
+        name: "clinic Management System",
         description: "Test Transaction",
         image: "https://example.com/your_logo", // Replace with your logo URL
         order_id: order.id,
